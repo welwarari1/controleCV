@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curriculum Vitae</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+    .info {
+        margin-bottom: 20px;
+        border-bottom: 2px solid #ffcc00;
+        padding-bottom: 10px;
+    }
+    .info label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #3366ff;
+    }
+    .info span {
+        color: #666;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Curriculum Vitae</h2>
+    <div class="info">
+        <label for="email">Email :</label>
+        <span id="email"></span>
+    </div>
+    <div class="info">
+        <label for="tel">Téléphone :</label>
+        <span id="tel"></span>
+    </div>
+    <div class="info">
+        <label for="adresse">Adresse :</label>
+        <span id="adresse"></span>
+    </div>
+    <div class="info">
+        <label for="niveau">Niveau d'étude :</label>
+        <span id="niveau"></span>
+    </div>
+    <div class="info">
+        <label for="experience">Expérience :</label>
+        <span id="experience"></span>
+    </div>
+</div>
+
+<script>
+    // Get stored user data from local storage
+    var cvData = localStorage.getItem("cvData");
+    var form = localStorage.getItem("formData");
+    if (cvData && form) {
+        // Parse the stored data
+        var cvDataParsed = JSON.parse(cvData);
+        var formData = JSON.parse(form);
+
+        // Display CV information
+        document.getElementById("email").textContent = formData.email;
+        document.getElementById("tel").textContent = cvDataParsed.telephone;
+        document.getElementById("adresse").textContent = cvDataParsed.adresse;
+        document.getElementById("niveau").textContent = cvDataParsed.niveauEtudes;
+        document.getElementById("experience").textContent = cvDataParsed.experience;
+    } else {
+        // If no CV data is found, display a message
+        document.getElementById("email").textContent = "Aucune donnée disponible";
+        document.getElementById("tel").textContent = "Aucune donnée disponible";
+        document.getElementById("adresse").textContent = "Aucune donnée disponible";
+        document.getElementById("niveau").textContent = "Aucune donnée disponible";
+        document.getElementById("experience").textContent = "Aucune donnée disponible";
+    }
+</script>
+
+</body>
+</html>
